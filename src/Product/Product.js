@@ -1,7 +1,7 @@
-import './Product.css';
+import "./Product.css";
 import { useState, useEffect } from "react";
 const Products = () => {
-  const url = "https://fakestoreapi.com/products?limit=15";
+  const url = "https://fakestoreapi.com/products?limit=20";
   const [products, setProducts] = useState();
 
   const getDataProducts = async () => {
@@ -16,12 +16,15 @@ const Products = () => {
 
   return (
     <div>
-        <h1>Fake Store</h1>
-      <div className="container">
+      <h2>Fake Store</h2>
+      <div
+        className="container
+      "
+      >
         {products?.map((produk) => {
           return (
-            <div className="col-3">
-              <CardProduct key={produk.id} title={produk.title} price={produk.price} description={produk.description} image={produk.image} />
+            <div>
+              <Card key={produk.id} title={produk.title} price={produk.price} description={produk.description} image={produk.image} />
             </div>
           );
         })}
@@ -30,34 +33,24 @@ const Products = () => {
   );
 };
 
-function CardProduct(props) {
+function Card(props) {
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={props.image} style={{ height: "150px" }} />
-      <Card.Body>
-        <Card.Title>{props.title}</Card.Title>
-        <Card.Text>
-          {props.description}
+    <div className="Card">
+      <img src={props.image} alt="#" />
+      <div className="Card-body">
+        <h3 className="Card-title">{props.title}</h3>
+        <div className="Card-text">
+          <p className="Card-desc">{props.description}</p>
           <p>Price : {props.price} $</p>
-        </Card.Text>
-        <button variant="primary">Click</button>
-      </Card.Body>
-    </Card>
-  );
-}
-function Card(){
-return(
-  <div className='Card'>
-    <img src="#" alt='#'/>
-    <div className='Card-body'>
-      <h3 className='Card-title'>kash</h3>
-      <p className='Card-desc'>loremsjdbssfkkkds</p>
-      <div id='Button'>
-        <a href='#' className='Button' type='button'>Buy Now</a>
+        </div>
+        <div id="Button">
+          <a href="#home" className="Button" type="button">
+            Buy Now
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-)
+  );
 }
 
 export default Products;
